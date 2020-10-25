@@ -17,6 +17,7 @@ var usersRouter = require('./routes/users');
 
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const flash = require('express-flash');
 
 const url = config.mongoUrl
 
@@ -47,6 +48,7 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(flash())
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
